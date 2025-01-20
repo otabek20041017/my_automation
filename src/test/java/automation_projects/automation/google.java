@@ -14,6 +14,8 @@ public class google {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=en-GB");
+        options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--start-maximized");
         WebDriver driver = new ChromeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

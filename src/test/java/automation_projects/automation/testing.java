@@ -16,6 +16,8 @@ public class testing {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=en-GB");
+        options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--start-maximized");
 
         WebDriver driver = new ChromeDriver(options);
         Thread.sleep(3000);
