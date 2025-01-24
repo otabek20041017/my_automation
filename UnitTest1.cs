@@ -3,23 +3,31 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Interactions;
 using System.Diagnostics.Metrics;
 
 namespace TestProject1
 {
     public class Tests
     {
-        IWebDriver driver;
+        ChromeOptions options;
+        public IWebDriver driver;
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            options = new ChromeOptions();
+            options.AddArgument("--disable-blink-features=AutomationControlled");
+            options.AddExcludedArgument("enable-automation");
+            options.AddArgument("--start-maximized");
+            options.AddArguments("--lang=en-GB");
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
         }
 
         [Test]
         public void Test1()
         {
+            
             driver.Navigate().GoToUrl("https://google.com");
 
             Assert.That(driver.Url, Is.EqualTo("https://www.google.com/"));

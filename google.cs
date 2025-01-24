@@ -23,7 +23,7 @@ public class google
     }
 
     [Test]
-    public void Test1()
+    public void uzbekNoodleTesting()
     {
         
         driver.Navigate().GoToUrl("https://google.com");
