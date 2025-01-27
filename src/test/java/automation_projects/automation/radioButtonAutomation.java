@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class radionButtonAutomation {
+public class radioButtonAutomation {
 
     ChromeOptions options;
     WebDriver driver;
