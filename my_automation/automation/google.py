@@ -23,7 +23,7 @@ driver.implicitly_wait(10)
 driver.get("https://google.com/")
 time.sleep(2)
 driver.find_element(By.XPATH, "//*[@title='Search']").send_keys("Uzbek noodle" + Keys.ENTER)
-driver.find_element(By.XPATH, "(//span[@class='VuuXrf'])[1]").click()
+driver.find_element(By.XPATH, "//span[.='Naturally Zuzu']").click()
 
 
 actualText = "Uzbek Laghman Traditional Noodle Dish"

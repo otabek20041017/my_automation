@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.chrome.options import Options
-from  selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By
 
 
 
@@ -24,7 +24,7 @@ class My_Log_In_Test(unittest.TestCase):
 
 
 
-    def test_positive_logging(self):
+    def test_1_positive_logging(self):
         driver = self.driver
         userName = driver.find_element(by=By.XPATH, value="//input[@id='username']")
         userName.send_keys("student")
@@ -36,17 +36,31 @@ class My_Log_In_Test(unittest.TestCase):
 
         driver.find_element(by=By.ID, value="submit").click()
 
+
+
         print("========== TEST 1 POSITIVE LOG IN TEST ==========")
         actualText = "Logged In Successfully"
         actualURL = "https://practicetestautomation.com/logged-in-successfully/"
-        expectedText = driver.find_element(By.XPATH, "//*[@class='post-title']")
+        expectedText = driver.find_element(by=By.XPATH, value="//h1[@class='post-title']")
+        value = expectedText.text
+
         print("ERROR MESSAGE: ----> " + str(expectedText.is_displayed()))
-        print("URL VALUE:     ----> "+str(driver.current_url))
+        print("URL VALUE:     ----> "+ str(driver.current_url))
+
+        driver.find_element(by=By.XPATH, value="//a[@class='wp-block-button__link has-text-color has-background has-very-dark-gray-background-color']").click()
+        expectedCurrentURL = driver.current_url
+        if expectedCurrentURL == actualURL:
+            print("EXPECTED AND ACTUAL URLS MATCHING: ---> |=>" + expectedCurrentURL + "<=| <--- This one its value!")
+        else:
+            print("EXPECTED AND ACTUAL URLS MATCHING: ---> |=>" + expectedCurrentURL + "<=| <--- This one its value!")
+
+        if expectedText == actualText:
+            print("EXPECTED TEXT AND ACTUAL IS MATCHING |=>" + value + "<=| <---- This one its value")
+        else:
+            print("EXPECTED TEXT AND ACTUAL IS NOT MATCHING |=>" + value + "<=| <---- This one its value")
 
 
-
-
-    def test_negative_username(self):
+    def test_2_negative_username(self):
         driver = self.driver
         incorrectUserName = driver.find_element(by=By.XPATH, value="//input[@id='username']")
         incorrectUserName.send_keys("incorrectUser")
@@ -59,12 +73,39 @@ class My_Log_In_Test(unittest.TestCase):
         driver.find_element(by=By.ID, value="submit").click()
 
         print("\n========== TEST 2 NEGATIVE USERNAME TEST ==========")
-        actualText = "Logged In Successfully"
-        actualURL = "https://practicetestautomation.com/logged-in-successfully/"
+        actualUserNameText = "Your username is invalid!"
         expectedErrorMessage = driver.find_element(By.XPATH, "//*[@class='show']")
         print("ERROR MESSAGE: ----> " + str(expectedErrorMessage.is_displayed()))
         print("TEXT VALUE:     ----> " + str(expectedErrorMessage.text))
         driver.find_element(By.ID, "submit").click()
+        if expectedErrorMessage == actualUserNameText:
+            print("EXPECTED TEXT AND ACTUAL IS MATCHING |=>" + str(expectedErrorMessage.text) + "<=| <---- This one its value!")
+        else:
+            print("EXPECTED TEXT AND ACTUAL IS NOT MATCHING |=>" + str(expectedErrorMessage.text) + "<=| <---- This one its value!")
+
+    def test_3_negative_password(self):
+        driver = self.driver
+        correctUserName = driver.find_element(by=By.XPATH, value="//input[@id='username']")
+        correctUserName.send_keys("student")
+        correctUserName.send_keys(Keys.ENTER)
+
+        incorrectPassword = driver.find_element(by=By.ID, value="password")
+        incorrectPassword.send_keys("incorrectPassword")
+        incorrectPassword.send_keys(Keys.ENTER)
+
+        driver.find_element(by=By.ID, value="submit").click()
+
+        print("\n========== TEST 3 NEGATIVE PASSWORD TEST ==========")
+        actualInavlidPasswordText = "Your password is invalid!"
+        expectedIncorrectPassword = driver.find_element(By.XPATH, "//div[@class='show']")
+        print("ERROR MESSAGE: ----> " + str(expectedIncorrectPassword.is_displayed()))
+        print("TEXT VALUE:     ----> " + str(expectedIncorrectPassword.text))
+
+        if expectedIncorrectPassword == actualInavlidPasswordText:
+            print("EXPECTED TEXT AND ACTUAL IS MATCHING |=>" + str(expectedIncorrectPassword.text) + "<=| <---- This one its value!")
+        else:
+            print("EXPECTED TEXT AND ACTUAL IS NOT MATCHING |=>" + str(expectedIncorrectPassword.text) + "<=| <---- This one its value!")
+
 
 
     @classmethod

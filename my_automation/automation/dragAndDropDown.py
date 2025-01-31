@@ -22,9 +22,6 @@ class MyTestCase(unittest.TestCase):
         self.driver = webdriver.Chrome(options)  # Replace with `webdriver.Firefox()` for Firefox
         self.driver.implicitly_wait(10)  # Implicit wait for elements
         self.driver.maximize_window()
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_argument("enable-automation")
-        options.add_argument("--start-maximized")
 
     def test_google_search(self):
         driver = self.driver
@@ -38,20 +35,23 @@ class MyTestCase(unittest.TestCase):
 
         actions = ActionChains(driver)
         #actions.drag_and_drop(angular, dropBox).perform()
+        print("dropping angulars ...")
         for angulars in range(5):
+
             angulars = actions.drag_and_drop(angular, dropBox).perform()
             print(angulars)
-            self.assertEqual(0, 0)
 
+        print("dropping mongos ...")
         for mongos in range(5):
             mongos = actions.drag_and_drop(mongo, dropBox).perform()
             print(mongos)
-            self.assertEqual(0, 0)
 
+        print("dropping nodes ...")
         for nodes in range(5):
             nodes = actions.drag_and_drop(node, dropBox).perform()
             print(nodes)
-            self.assertEqual(0, 0)
+
+        print("ending of for looping ...")
 
 
 
@@ -61,4 +61,4 @@ class MyTestCase(unittest.TestCase):
         self.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
