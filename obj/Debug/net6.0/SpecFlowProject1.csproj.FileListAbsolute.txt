@@ -122,3 +122,4 @@ C:\Users\otabek.ozbeg\source\repos\SpecFlowProject1\SpecFlowProject1\bin\Debug\n
 C:\Users\otabek.ozbeg\source\repos\SpecFlowProject1\SpecFlowProject1\bin\Debug\net6.0\AngleSharp.dll
 C:\Users\otabek.ozbeg\source\repos\SpecFlowProject1\SpecFlowProject1\bin\Debug\net6.0\ICSharpCode.SharpZipLib.dll
 C:\Users\otabek.ozbeg\source\repos\SpecFlowProject1\SpecFlowProject1\bin\Debug\net6.0\WebDriverManager.dll
+C:\Users\otabek.ozbeg\source\repos\SpecFlowProject1\SpecFlowProject1\obj\Debug\net6.0\SpecFlowProject1.sourcelink.json

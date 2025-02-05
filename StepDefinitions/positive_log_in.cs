@@ -20,14 +20,14 @@ namespace SpecFlowProject.StepDefinitions
         [Given(@"the user navigates to ""(.*)""")]
         public void GivenUserNavigatesTo(string url)
         {
-            _driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
+            _driver.Navigate().GoToUrl(url);
         }
 
         [When(@"the user enters ""(.*)"" and ""(.*)""")]
         public void WhenUserEntersCredentials(string username, string password)
         {
-            _driver.FindElement(By.Id("username")).SendKeys("student");
-            _driver.FindElement(By.Id("password")).SendKeys("Password123");
+            _driver.FindElement(By.Id("username")).SendKeys(username);
+            _driver.FindElement(By.Id("password")).SendKeys(password);
         }
 
         [When(@"clicks the submit button")]
